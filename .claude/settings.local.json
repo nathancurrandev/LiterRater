@@ -4,7 +4,13 @@
       "Bash(bash .specify/scripts/bash/check-prerequisites.sh --json --paths-only)",
       "Bash(bash .specify/scripts/bash/setup-plan.sh --json)",
       "Bash(bash .specify/scripts/bash/update-agent-context.sh claude)",
-      "Bash(bash .specify/scripts/bash/check-prerequisites.sh --json)"
+      "Bash(bash .specify/scripts/bash/check-prerequisites.sh --json)",
+      "Bash(git -C \"c:/Users/ncurr/Documents/github-projects/literRater\" status)",
+      "Bash(git -C \"c:/Users/ncurr/Documents/github-projects/literRater\" log --oneline -3)",
+      "Bash(git -C \"c:/Users/ncurr/Documents/github-projects/literRater\" diff --staged --stat)",
+      "Bash(git -C \"c:/Users/ncurr/Documents/github-projects/literRater\" diff HEAD..main --stat)",
+      "Bash(git -C \"c:/Users/ncurr/Documents/github-projects/literRater\" log main..HEAD --oneline)",
+      "Bash(bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks)"
     ]
   }
 }
