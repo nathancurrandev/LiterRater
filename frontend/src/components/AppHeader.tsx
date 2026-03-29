@@ -40,6 +40,16 @@ export default function AppHeader() {
           <Button variant="ghost" size="sm" asChild>
             <Link to="/books">Books</Link>
           </Button>
+          {currentUser && (
+            <>
+              <Button variant="ghost" size="sm" asChild>
+                <Link to="/feed">Feed</Link>
+              </Button>
+              <Button variant="ghost" size="sm" asChild>
+                <Link to="/diary">Diary</Link>
+              </Button>
+            </>
+          )}
         </nav>
 
         {/* Search */}

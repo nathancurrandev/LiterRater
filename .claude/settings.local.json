@@ -10,7 +10,10 @@
       "Bash(git -C \"c:/Users/ncurr/Documents/github-projects/literRater\" diff --staged --stat)",
       "Bash(git -C \"c:/Users/ncurr/Documents/github-projects/literRater\" diff HEAD..main --stat)",
       "Bash(git -C \"c:/Users/ncurr/Documents/github-projects/literRater\" log main..HEAD --oneline)",
-      "Bash(bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks)"
+      "Bash(bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks)",
+      "Bash(bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks --feature-dir specs/001-social-book-platform)",
+      "Bash(wc -l echo \"---\" find /Users/aidanbrennan/Documents/LiterRater/literrater/backend -type f \\\\\\( -name \"*.ts\" \\\\\\))",
+      "Bash(sort echo:*)"
     ]
   }
 }

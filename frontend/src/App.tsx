@@ -3,8 +3,10 @@ import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-route
 import { AuthProvider, useAuth } from '@/hooks/useAuth';
 import AppHeader from '@/components/AppHeader';
 import CookieConsentBanner from '@/components/CookieConsentBanner';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 // Lazy page imports
+const HomePage = lazy(() => import('@/pages/HomePage'));
 const ActivityFeedPage = lazy(() => import('@/pages/ActivityFeedPage'));
 const LoginPage = lazy(() => import('@/pages/LoginPage'));
 const RegisterPage = lazy(() => import('@/pages/RegisterPage'));
@@ -13,8 +15,10 @@ const BookDetailPage = lazy(() => import('@/pages/BookDetailPage'));
 const AuthorDetailPage = lazy(() => import('@/pages/AuthorDetailPage'));
 const ListDetailPage = lazy(() => import('@/pages/ListDetailPage'));
 const UserProfilePage = lazy(() => import('@/pages/UserProfilePage'));
+const ReadingDiaryPage = lazy(() => import('@/pages/ReadingDiaryPage'));
 const AccountSettingsPage = lazy(() => import('@/pages/AccountSettingsPage'));
 const PrivacyPolicyPage = lazy(() => import('@/pages/PrivacyPolicyPage'));
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 // Admin lazy imports
 const AdminLayout = lazy(() => import('@/pages/admin/AdminLayout'));
@@ -70,6 +74,14 @@ function AppRoutes() {
         {/* Public routes with AppHeader */}
         <Route
           path="/"
+          element={
+            <MainLayout>
+              <HomePage />
+            </MainLayout>
+          }
+        />
+        <Route
+          path="/feed"
           element={
             <MainLayout>
               <ProtectedRoute>
@@ -135,6 +147,16 @@ function AppRoutes() {
           }
         />
         <Route
+          path="/diary"
+          element={
+            <MainLayout>
+              <ProtectedRoute>
+                <ReadingDiaryPage />
+              </ProtectedRoute>
+            </MainLayout>
+          }
+        />
+        <Route
           path="/account"
           element={
             <MainLayout>
@@ -166,6 +188,16 @@ function AppRoutes() {
           <Route path="authors" element={<AdminAuthorsPage />} />
           <Route path="users" element={<AdminUsersPage />} />
         </Route>
+
+        {/* 404 catch-all */}
+        <Route
+          path="*"
+          element={
+            <MainLayout>
+              <NotFoundPage />
+            </MainLayout>
+          }
+        />
       </Routes>
     </Suspense>
   );
@@ -174,10 +206,12 @@ function AppRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
-        <CookieConsentBanner />
-      </AuthProvider>
+      <ErrorBoundary>
+        <AuthProvider>
+          <AppRoutes />
+          <CookieConsentBanner />
+        </AuthProvider>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }
