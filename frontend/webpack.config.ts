@@ -1,6 +1,6 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { Configuration } from 'webpack';
+import webpack, { Configuration } from 'webpack';
 import 'webpack-dev-server';
 
 const config: Configuration = {
@@ -33,6 +33,9 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.API_URL': JSON.stringify(process.env.API_URL ?? ''),
     }),
   ],
   devServer: {

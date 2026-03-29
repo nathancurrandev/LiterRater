@@ -36,3 +36,6 @@ coverage/
 
 # Docker
 *.pid
+
+# Compiled
+*.d.ts

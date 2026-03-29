@@ -24,8 +24,10 @@
     "noEmit": true,
     "incremental": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "types": ["node"]
+    "jsx": "react-jsx",
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "**/*.ts"

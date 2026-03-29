@@ -5,6 +5,7 @@ import {
   ManyToMany,
   Collection,
   Index,
+  type Opt,
 } from '@mikro-orm/core';
 import { Author } from './Author';
 import { Tag } from './Tag';
@@ -37,10 +38,10 @@ export class Book {
   language: string = 'en';
 
   @Property()
-  createdAt: Date = new Date();
+  createdAt: Date & Opt = new Date();
 
   @Property({ onUpdate: () => new Date() })
-  updatedAt: Date = new Date();
+  updatedAt: Date & Opt = new Date();
 
   @ManyToMany(() => Author, (author) => author.books, {
     owner: true,

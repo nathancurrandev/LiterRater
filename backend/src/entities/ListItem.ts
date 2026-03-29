@@ -1,5 +1,5 @@
 import { Entity, PrimaryKey, Property, ManyToOne, Unique } from '@mikro-orm/core';
-import { List } from './List';
+import type { List } from './List';
 import { Book } from './Book';
 
 @Entity({ tableName: 'list_items' })
@@ -14,7 +14,7 @@ export class ListItem {
   @Property({ nullable: true, type: 'text' })
   notes: string | null = null;
 
-  @ManyToOne(() => List)
+  @ManyToOne({ entity: 'List' })
   list!: List;
 
   @ManyToOne(() => Book)

@@ -8,7 +8,7 @@ import {
   Collection,
 } from '@mikro-orm/core';
 import { User } from './User';
-import { ListItem } from './ListItem';
+import type { ListItem } from './ListItem';
 
 export enum ListVisibility {
   PUBLIC = 'public',
@@ -41,6 +41,6 @@ export class List {
   @ManyToOne(() => User)
   owner!: User;
 
-  @OneToMany(() => ListItem, (item) => item.list)
+  @OneToMany({ entity: 'ListItem', mappedBy: 'list' })
   items: Collection<ListItem> = new Collection<ListItem>(this);
 }
