@@ -1,4 +1,4 @@
-import React, { lazy, ReactNode, Suspense } from 'react';
+import { lazy, ReactNode, Suspense } from 'react';
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from '@/hooks/useAuth';
 import AppHeader from '@/components/AppHeader';

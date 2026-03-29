@@ -4,11 +4,6 @@ import type { ReadingEntry, BookSummary, PaginationMeta } from '@/types';
 
 type ReadingEntryWithBook = ReadingEntry & { book: BookSummary };
 
-interface ListResponse {
-  data: ReadingEntryWithBook[];
-  meta: PaginationMeta;
-}
-
 interface CreateData {
   bookId: number;
   status: 'reading' | 'finished' | 'abandoned';

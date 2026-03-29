@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 export default function AdminLayout() {

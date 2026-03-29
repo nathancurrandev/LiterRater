@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { render, screen, fireEvent } from '@testing-library/react';
 import ReviewCard from '@/components/ReviewCard';
 import type { Review } from '@/types';
