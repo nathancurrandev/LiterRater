@@ -14,7 +14,8 @@
       "Bash(bash .specify/scripts/bash/check-prerequisites.sh --json --require-tasks --include-tasks --feature-dir specs/001-social-book-platform)",
       "Bash(wc -l echo \"---\" find /Users/aidanbrennan/Documents/LiterRater/literrater/backend -type f \\\\\\( -name \"*.ts\" \\\\\\))",
       "Bash(sort echo:*)",
-      "Bash(grep -r \"setupFilesAfterFramework\\\\|setupFilesAfterEnv\" /Users/aidanbrennan/Documents/LiterRater/literrater/frontend/node_modules/jest-circus/build --include=*.js -l)"
+      "Bash(grep -r \"setupFilesAfterFramework\\\\|setupFilesAfterEnv\" /Users/aidanbrennan/Documents/LiterRater/literrater/frontend/node_modules/jest-circus/build --include=*.js -l)",
+      "Bash(grep -r \"seedAdmin\\\\|seed\" /c/Users/ncurr/Documents/github-projects/LiterRater/backend/pages --include=*.ts)"
     ]
   }
 }

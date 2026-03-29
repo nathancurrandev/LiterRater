@@ -2,7 +2,7 @@ import { NextApiResponse } from 'next';
 import { requireAdmin, AuthenticatedRequest } from '../../../../src/middleware/auth';
 import { getOrm } from '../../../../src/lib/orm';
 import { User } from '../../../../src/entities/User';
-import { sendSuccess, sendError } from '../../../../src/lib/response';
+import { sendError } from '../../../../src/lib/response';
 
 export default requireAdmin(async (req: AuthenticatedRequest, res: NextApiResponse): Promise<void> => {
   if (req.method !== 'GET') {

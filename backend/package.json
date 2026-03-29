@@ -8,6 +8,7 @@
     "start": "next start -p 3001",
     "migrate": "mikro-orm migration:up",
     "migrate:create": "mikro-orm migration:create",
+    "seed": "ts-node src/scripts/seed.ts",
     "seed:admin": "ts-node src/scripts/seedAdmin.ts",
     "test": "jest",
     "test:watch": "jest --watch",
