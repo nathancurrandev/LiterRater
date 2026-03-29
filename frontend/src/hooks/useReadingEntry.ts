@@ -34,7 +34,7 @@ export function useReadingEntries(filters?: {
       if (filters?.status) params.set('status', filters.status);
       if (filters?.page) params.set('page', String(filters.page));
       const qs = params.toString();
-      const res = await api.get<{ data: ReadingEntryWithBook[]; meta: PaginationMeta }>(
+      const res = await api.getRaw<{ data: ReadingEntryWithBook[]; meta: PaginationMeta }>(
         `/api/reading-entries${qs ? `?${qs}` : ''}`,
       );
       setEntries(res.data);

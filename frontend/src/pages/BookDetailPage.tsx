@@ -27,11 +27,11 @@ export default function BookDetailPage() {
     setIsLoading(true);
     Promise.all([
       api.get<BookDetail>(`/api/books/${id}`),
-      api.get<{ data: Review[] }>(`/api/books/${id}/reviews`),
+      api.get<Review[]>(`/api/books/${id}/reviews`),
     ])
       .then(([b, r]) => {
         setBook(b);
-        setReviews(r.data);
+        setReviews(r);
       })
       .catch((err: unknown) => setError(err instanceof Error ? err.message : 'Failed to load book'))
       .finally(() => setIsLoading(false));
@@ -40,8 +40,8 @@ export default function BookDetailPage() {
   useEffect(() => {
     if (!id || !currentUser) return;
     api
-      .get<{ data: ReadingEntry[] }>(`/api/reading-entries?bookId=${id}`)
-      .then((res) => setMyEntry(res.data[0] ?? null))
+      .get<ReadingEntry[]>(`/api/reading-entries?bookId=${id}`)
+      .then((entries) => setMyEntry(entries[0] ?? null))
       .catch(() => undefined);
   }, [id, currentUser]);
 

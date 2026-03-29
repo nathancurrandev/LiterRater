@@ -21,12 +21,12 @@ export default function UserProfilePage() {
     setIsLoading(true);
     Promise.all([
       api.get<UserProfile>(`/api/users/${id}`),
-      api.get<{ data: ListSummary[] }>(`/api/users/${id}/lists`),
+      api.get<ListSummary[]>(`/api/users/${id}/lists`),
     ])
       .then(([p, l]) => {
         setProfile(p);
         setIsFollowing(p.isFollowedByMe);
-        setLists(l.data);
+        setLists(l);
       })
       .catch((err: unknown) => setError(err instanceof Error ? err.message : 'Failed to load profile'))
       .finally(() => setIsLoading(false));

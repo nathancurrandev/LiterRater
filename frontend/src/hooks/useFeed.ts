@@ -12,7 +12,7 @@ export function useFeed(page = 1) {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await api.get<{ data: ActivityEvent[]; meta: PaginationMeta }>(
+      const res = await api.getRaw<{ data: ActivityEvent[]; meta: PaginationMeta }>(
         `/api/feed?page=${page}`,
       );
       setEvents(res.data);

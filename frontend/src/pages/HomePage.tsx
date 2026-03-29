@@ -16,8 +16,8 @@ export default function HomePage() {
 
   useEffect(() => {
     api
-      .get<{ data: BookSummary[] }>('/api/books?limit=6')
-      .then((res) => setRecentBooks(res.data))
+      .get<BookSummary[]>('/api/books?limit=6')
+      .then((books) => setRecentBooks(books))
       .catch(() => {/* non-critical */});
   }, []);
 

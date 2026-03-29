@@ -25,7 +25,7 @@ export default function BookSearchPage() {
     if (q) params.set('q', q);
     params.set('page', String(page));
     api
-      .get<{ data: BookSummary[]; meta: PaginationMeta }>(`/api/books?${params.toString()}`)
+      .getRaw<{ data: BookSummary[]; meta: PaginationMeta }>(`/api/books?${params.toString()}`)
       .then((res) => {
         setBooks(res.data);
         setMeta(res.meta);

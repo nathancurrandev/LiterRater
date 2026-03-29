@@ -27,8 +27,8 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     api
-      .get<UserSummary>('/api/auth/me')
-      .then((user) => {
+      .get<{ user: UserSummary }>('/api/auth/me')
+      .then(({ user }) => {
         setCurrentUser(user);
       })
       .catch(() => {
@@ -40,7 +40,7 @@ function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   async function login(email: string, password: string): Promise<void> {
-    const user = await api.post<UserSummary>('/api/auth/login', { email, password });
+    const { user } = await api.post<{ user: UserSummary }>('/api/auth/login', { email, password });
     setCurrentUser(user);
   }
 
@@ -50,7 +50,7 @@ function AuthProvider({ children }: AuthProviderProps) {
     username: string,
     displayName: string,
   ): Promise<void> {
-    const user = await api.post<UserSummary>('/api/auth/register', {
+    const { user } = await api.post<{ user: UserSummary }>('/api/auth/register', {
       email,
       password,
       username,
