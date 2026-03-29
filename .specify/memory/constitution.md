@@ -1,20 +1,18 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version change: [unversioned template] → 1.0.0
-Modified principles: N/A (initial population)
+Version change: 1.0.0 → 1.1.0
+Modified principles: N/A
 Added sections:
-  - Core Principles (I–X, all new)
-  - Technology Stack
-  - Development Workflow
-  - Governance
+  - Principle X. Spec-Driven Branching (new)
+  - Development Workflow: added branch creation rule
 Removed sections: N/A
 Templates requiring updates:
   - .specify/templates/plan-template.md  ✅ aligned (Constitution Check section present; no changes required)
   - .specify/templates/spec-template.md  ✅ aligned (no constitution-specific constraints missing)
   - .specify/templates/tasks-template.md ✅ aligned (task categories match; web-app path conventions apply)
 Follow-up TODOs:
-  - TODO(RATIFICATION_DATE): Using 2026-03-29 (today) as ratification date — update if project predates this.
+  - TODO(RATIFICATION_DATE): Using 2026-03-29 as ratification date — update if project predates this.
 -->
 
 # LiterRater Constitution
@@ -118,6 +116,20 @@ size. Container configuration MUST be committed to the repository.
 **Rationale**: Containerization eliminates "works on my machine" discrepancies and
 provides a reproducible environment for development, CI, and production.
 
+### X. Spec-Driven Branching
+
+Before writing any implementation code, a dedicated Git branch MUST be created
+and checked out. The branch name MUST be derived from the task or feature being
+developed, following the convention `<type>/<short-description>` using
+kebab-case (e.g., `feat/user-authentication`, `fix/book-rating-null-check`,
+`chore/docker-compose-setup`). Permitted type prefixes: `feat`, `fix`, `chore`,
+`refactor`, `test`, `docs`. Implementation commits MUST NOT be made directly
+to `main`. Every branch MUST trace back to a spec or task in `/specs/`.
+
+**Rationale**: Branch-per-task enforces traceability between specs and code,
+enables parallel work without conflicts, and keeps `main` in a releasable state
+at all times.
+
 ## Technology Stack
 
 Summary of mandatory technology choices:
@@ -140,6 +152,9 @@ Introducing a technology not listed above requires a constitution amendment.
 ## Development Workflow
 
 - All features begin with a spec (`/speckit.specify`) before any implementation.
+- Before any implementation code is written, a new Git branch MUST be created and
+  checked out with a name matching `<type>/<short-description>` in kebab-case
+  (e.g., `feat/user-authentication`). No commits to `main` directly.
 - The `docker compose up` command MUST succeed on a fresh clone before any PR
   is merged.
 - TypeScript compilation (`tsc --noEmit`) MUST pass with zero errors in CI.
@@ -166,4 +181,4 @@ Complexity Tracking table with justification.
 
 **Version policy**: Semantic versioning — `MAJOR.MINOR.PATCH`.
 
-**Version**: 1.0.0 | **Ratified**: 2026-03-29 | **Last Amended**: 2026-03-29
+**Version**: 1.1.0 | **Ratified**: 2026-03-29 | **Last Amended**: 2026-03-29
